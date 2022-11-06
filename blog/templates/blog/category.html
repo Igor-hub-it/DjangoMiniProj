@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="/">Добавить новость</a>
+              <a class="nav-link" href="{% url 'Home' %}">Добавить новость</a>
             </li>
           </ul>
         </div>
@@ -24,12 +24,12 @@
     </nav>
 
     <div class="container">
-        <h1>{{ title }}</h1>
+        <h1>{{ category.title }}</h1>
         <div class="row">
             <div class="col-md-4">
                 <div class="list-group">
                     {% for item in categories %}
-                      <a href="{% url 'categoryPage' item.pk %}" class="list-group-item list-group-item-action active">{{ item.category }}</a>
+                      <a href="/category/{{ item.pk }}" class="list-group-item list-group-item-action active">{{ item.category }}</a>
                     {% endfor %}
                 </div>
             </div>
@@ -45,9 +45,6 @@
                     </div>
                     <div class="card-footer">
                         {{ post.created_at|date:'Y-m-d' }}
-                        <p>
-                            категория: {{ post.category }}
-                        </p>
                     </div>
                 </div>
 
