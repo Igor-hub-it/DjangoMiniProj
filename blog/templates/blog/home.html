@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    ЖОПА
+{% endblock %}
+
 {% block sidebar %}
     {% include 'include_files/_sidebar.html' %}
 {% endblock %}
@@ -11,8 +15,8 @@
                     {{ post.title }}
                 </div>
                 <div class="card-body">
-                    <p class="card-text">{{ post.content }}</p>
-                    <a class="btn btn-primary" href="#">Read more...</a>
+                    <p class="card-text">{{ post.content|slice:180 }}</p>
+                    <a class="btn btn-primary" href="{{ post.get_absolute_url }}">Read more...</a>
                 </div>
                 <div class="card-footer">
                     {{ post.created_at|date:'Y-m-d' }}
